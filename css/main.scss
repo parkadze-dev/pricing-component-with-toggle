@@ -1,0 +1,223 @@
+@import "reset";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
+
+//* Colors *//
+$bg-color: hsl(240, 78%, 98%);
+$primary-text-color: hsl(233, 13%, 49%);
+$secondary-text-color: hsl(234, 14%, 74%);
+$price-text-color: hsl(232, 13%, 33%);
+$bg-blue: hsl(236, 72%, 79%);
+$bg-light-purple: hsl(237, 63%, 64%);
+
+$gradient-list: $bg-blue, $bg-light-purple;
+
+@mixin gradient($direction, $list) {
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);
+}
+
+hr {
+  margin: 0;
+  border-top: 1px solid hsl(234, 14%, 74%);
+  opacity: 0.4;
+}
+
+body {
+  padding: 0 24px;
+  font-family: "Montserrat";
+  background-color: $bg-color;
+  background-image: url("/img/bg-top.svg");
+  background-repeat: no-repeat;
+  background-position: 190px -30px;
+  text-align: center;
+  color: $primary-text-color;
+}
+
+button {
+  padding: 14px 0;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.header {
+  font-weight: 700;
+  margin-bottom: 90px;
+
+  h2 {
+    margin-top: 90px;
+    font-size: 32px;
+  }
+
+  .slider-container {
+    margin-top: 40px;
+    color: $secondary-text-color;
+    line-height: 34px;
+  }
+
+  .switch {
+    margin: 0 20px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include gradient(left, $gradient-list);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+.grid-container .option-container {
+  padding: 36px 24px;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 40px -15px rgba(105, 111, 221, 0.35);
+  font-weight: 700;
+
+  .option-type {
+    font-size: 18px;
+  }
+
+  .price {
+    padding: 30px 0;
+    font-size: 56px;
+    color: $price-text-color;
+  }
+
+  .benefit {
+    padding: 16px 0px;
+  }
+
+  .secondary-cta {
+    margin-top: 40px;
+    color: white;
+    @include gradient(left, $gradient-list);
+  }
+}
+
+.grid-container .primary-option-container {
+  padding: 36px 24px;
+  margin-bottom: 40px;
+  color: white;
+  @include gradient(top, $gradient-list);
+  border-radius: 12px;
+  box-shadow: 0px 4px 40px -15px rgba(105, 111, 221, 0.35);
+  font-weight: 700;
+
+  .option-type {
+    font-size: 18px;
+  }
+
+  .price {
+    padding: 30px 0;
+    font-size: 56px;
+    color: #ffffff;
+  }
+
+  .benefit {
+    padding: 16px 0px;
+  }
+
+  .primary-cta {
+    color: $bg-light-purple;
+    background-color: white;
+    margin-top: 40px;
+  }
+}
+
+.attribution {
+  margin: 90px 0 16px 0;
+  font-weight: 700;
+  line-height: 24px;
+  color: $price-text-color;
+
+  a {
+    text-decoration: underline;
+    color: $price-text-color;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    padding: 0 128px;
+    background-position: 480px -30px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    padding: 0 24px;
+    background-position: 800px -30px;
+  }
+
+  .grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grid-container .option-container {
+    height: 364px;
+    padding: 36px 48px;
+  }
+
+  .grid-container .primary-option-container {
+    padding: 60px 48px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  body {
+    padding: 0 24px;
+    background-image: url("/img/bg-top.svg");
+    background-position: 1100px 0px;
+  }
+}
